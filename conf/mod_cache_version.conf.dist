@@ -1,0 +1,48 @@
+[worldserver]
+
+########################################
+# mod-cache-version
+#
+# Writes cache-version.txt, a checksum of the world tables the WoW client caches (items, quests,
+# creatures, game objects, NPC text, pages). The Evermore launcher clears players' Cache folder
+# once whenever it changes, so data changes show up without anyone deleting Cache by hand.
+########################################
+
+#
+#    CacheVersion.Enable
+#        Description: Master switch.
+#        Default:     1
+#
+
+CacheVersion.Enable = 1
+
+#
+#    CacheVersion.OutputFile
+#        Description: Where to write the file. Empty = cache-version.txt in mod-realm-config's
+#                     RealmConfig.OutputDirectory (the folder the portal serves at /realm/).
+#        Default:     ""
+#
+
+CacheVersion.OutputFile = ""
+
+#
+#    CacheVersion.Tables
+#        Description: Comma-separated world tables to checksum. The default covers every table
+#                     behind the client's WDB caches and their locale tables.
+#        Default:     "item_template,item_template_locale,quest_template,quest_template_addon,
+#                      quest_template_locale,quest_offer_reward,quest_offer_reward_locale,
+#                      quest_request_items,quest_request_items_locale,creature_template,
+#                      creature_template_locale,gameobject_template,gameobject_template_locale,
+#                      npc_text,npc_text_locale,page_text,page_text_locale" (one line)
+#
+
+CacheVersion.Tables = "item_template,item_template_locale,quest_template,quest_template_addon,quest_template_locale,quest_offer_reward,quest_offer_reward_locale,quest_request_items,quest_request_items_locale,creature_template,creature_template_locale,gameobject_template,gameobject_template_locale,npc_text,npc_text_locale,page_text,page_text_locale"
+
+#
+#    CacheVersion.Salt
+#        Description: Any text, mixed into the value. Change it to make every launcher clear its
+#                     Cache once without changing the database.
+#        Default:     ""
+#
+
+CacheVersion.Salt = ""
