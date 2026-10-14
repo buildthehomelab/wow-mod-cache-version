@@ -9,9 +9,9 @@
  * until they delete Cache by hand.
  *
  * At startup this module checksums the world tables the client caches and writes the result to
- * cache-version.txt next to mod-realm-config's realm.conf (RealmConfig.OutputDirectory), which
- * the portal serves at /realm/cache-version.txt. The Evermore launcher (Portalkeeper fork) reads
- * it and clears Cache once whenever it changes. So: change the data, restart the worldserver as
+ * cache-version.txt next to mod-realm-config's realm.conf (RealmConfig.OutputDirectory), so the
+ * web server that serves realm.conf serves it too. Portalkeeper (the buildthehomelab fork) reads
+ * it and clears Cache once whenever it changes; any other launcher or site can read it as well. So: change the data, restart the worldserver as
  * usual, and every player's stale cache goes away by itself.
  *
  * The file is only rewritten when the value changes. CacheVersion.Salt forces a new value without
