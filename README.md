@@ -14,10 +14,12 @@ With this module:
   `quest_template` and friends, `creature_template`, `gameobject_template`, `npc_text`, `page_text`,
   plus their `_locale` tables) and writes the result to `cache-version.txt`.
 - **The file goes next to mod-realm-config's `realm.conf`** (`RealmConfig.OutputDirectory`), so
-  the portal serves it at `/realm/cache-version.txt` with no extra setup.
-- **The Evermore launcher** ([wow-Portalkeeper](https://github.com/buildthehomelab/wow-Portalkeeper),
-  0.5.4 and later) reads it and **clears each player's `Cache` once whenever it changes**, after its
-  next realm check or right before ENTER REALM.
+  the web server that already serves `realm.conf` to launchers serves it too (for example at
+  `/realm/cache-version.txt`) with no extra setup.
+- **Portalkeeper** (the buildthehomelab fork,
+  [wow-Portalkeeper](https://github.com/buildthehomelab/wow-Portalkeeper), 0.5.4 and later) reads it
+  and **clears each player's `Cache` once whenever it changes**, after its next realm check or right
+  before ENTER REALM. Any other launcher or site can read the same file.
 - **Nothing changes, nothing happens.** The file is only rewritten when the value changes, so a
   plain restart doesn't clear anyone's cache.
 - **`CacheVersion.Salt`** forces a new value without touching the database, for the odd case where
@@ -38,7 +40,8 @@ Category: Launcher
 - AzerothCore WotLK (tested against the mod-playerbots branch at `f19a187`).
 - [mod-realm-config](https://github.com/Hisha/mod-realm-config) for the default output folder, or
   set `CacheVersion.OutputFile` yourself.
-- The Evermore launcher 0.5.4 or later on the players' side. Without it the file is harmless.
+- Portalkeeper (the buildthehomelab fork, 0.5.4 or later) or another launcher that reads the file,
+  on the players' side. Without one the file is harmless.
 
 ## Installation
 
@@ -69,7 +72,7 @@ two.
 ## Troubleshooting
 
 - **`no output file` in the log:** mod-realm-config isn't installed or `RealmConfig.OutputDirectory`
-  is empty. Set `CacheVersion.OutputFile` to a path the portal serves.
+  is empty. Set `CacheVersion.OutputFile` to a path your web server serves.
 - **`can't write` / `can't replace`:** the worldserver user can't write to that folder. It's the same
   folder mod-realm-config writes `realm.conf` to, so check its owner (UID 1000 in the Docker setup).
 - **Players still see old data:** the launcher only checks after a realm refresh or right before
@@ -78,7 +81,7 @@ two.
 
 ## Credits
 
-Written for the Vaultrona / Evermore realm. The launcher side lives in
+The launcher side lives in
 [wow-Portalkeeper](https://github.com/buildthehomelab/wow-Portalkeeper), a fork of
 [Hisha/Portalkeeper](https://github.com/Hisha/Portalkeeper).
 

@@ -4,8 +4,9 @@
 # mod-cache-version
 #
 # Writes cache-version.txt, a checksum of the world tables the WoW client caches (items, quests,
-# creatures, game objects, NPC text, pages). The Evermore launcher clears players' Cache folder
-# once whenever it changes, so data changes show up without anyone deleting Cache by hand.
+# creatures, game objects, NPC text, pages). Portalkeeper (the buildthehomelab fork) clears
+# players' Cache folder once whenever it changes, so data changes show up without anyone
+# deleting Cache by hand. Any other launcher or site can read the same file.
 ########################################
 
 #
@@ -19,7 +20,8 @@ CacheVersion.Enable = 1
 #
 #    CacheVersion.OutputFile
 #        Description: Where to write the file. Empty = cache-version.txt in mod-realm-config's
-#                     RealmConfig.OutputDirectory (the folder the portal serves at /realm/).
+#                     RealmConfig.OutputDirectory (the folder your web server serves realm.conf
+#                     from).
 #        Default:     ""
 #
 
