@@ -37,7 +37,7 @@ Category: Launcher
 
 ## Requirements
 
-- AzerothCore WotLK (tested against the mod-playerbots branch at `f19a187`).
+- AzerothCore WotLK. It uses only stock script and database APIs, no core changes.
 - [mod-realm-config](https://github.com/Hisha/mod-realm-config) for the default output folder, or
   set `CacheVersion.OutputFile` yourself.
 - Portalkeeper (the buildthehomelab fork, 0.5.4 or later) or another launcher that reads the file,
